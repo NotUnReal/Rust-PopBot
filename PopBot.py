@@ -1,5 +1,4 @@
 import discord
-import arrow
 import requests
 import aiohttp
 from discord.ext import commands, tasks
@@ -27,7 +26,7 @@ async def on_command_error(ctx, error):
 
 @client.event
 async def on_ready():
-    print(f"[{arrow.now().format('YYYY-MM-DD HH:mm:ss')}] Bot successfully started\n")
+    print(f"Bot successfully started\n")
     change_status.start()
 
 @tasks.loop(seconds=60)
