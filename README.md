@@ -1,4 +1,4 @@
-# Rust-PopBot
+# Basic Rust Pop Bot
 work in progress!!!
 
 Required packages:
