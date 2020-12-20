@@ -19,11 +19,12 @@ intents = discord.Intents()
 client = commands.Bot(command_prefix="-",intents=intents)
 client.remove_command('help')
 
+
 @client.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.errors.CommandNotFound):
         pass
-    
+
 @client.event
 async def on_ready():
     print(f"[{arrow.now().format('YYYY-MM-DD HH:mm:ss')}] Bot successfully started\n")
