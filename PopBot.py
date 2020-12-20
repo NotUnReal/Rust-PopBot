@@ -8,8 +8,8 @@ from discord.ext import commands, tasks
 #-------------------- START CONFIG --------------------
 # -----------------------------------------------------
 
-discordBotToken = "NjY1NjE0ODc2NTY3MTQyNDEx.XhoMKQ.dnEjxYpf4jpKaYeElaX7ZIIQ5lU"
-battleMetricsServerID = 2569573
+discordBotToken = ""
+battleMetricsServerID = None
 
 # -----------------------------------------------------
 #--------------------- END CONFIG ---------------------
