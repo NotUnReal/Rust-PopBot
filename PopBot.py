@@ -7,8 +7,8 @@ from discord.ext import commands, tasks
 #-------------------- START CONFIG --------------------
 # -----------------------------------------------------
 
-discordBotToken = ""
-battleMetricsServerID = None
+discordBotToken = "" #type: str
+battleMetricsServerID = None #type: int
 
 # -----------------------------------------------------
 #--------------------- END CONFIG ---------------------
