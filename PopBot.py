@@ -14,10 +14,7 @@ battleMetricsServerID = None #type: int
 #--------------------- END CONFIG ---------------------
 # -----------------------------------------------------
 
-intents = discord.Intents()
-client = commands.Bot(command_prefix="-",intents=intents)
-client.remove_command('help')
-
+client = commands.Bot(command_prefix="-",intents=discord.Intents().default(),help_command=None)
 
 @client.event
 async def on_command_error(ctx, error):
@@ -27,10 +24,12 @@ async def on_command_error(ctx, error):
 @client.event
 async def on_ready():
     print(f"Bot successfully started\n")
-    change_status.start()
 
 @tasks.loop(seconds=60)
 async def change_status():
+
+    await client.wait_until_ready()
+
     serverData = await makeWebRequest(f"https://api.battlemetrics.com/servers/{battleMetricsServerID}")
     if serverData == None:
         return
@@ -51,5 +50,7 @@ async def makeWebRequest(URL):
                 return await preJSData.json()
             else:
                 print(f"BattleMetrics Error [Code {preJSData.status}]")
+
+change_status.start()
 
 client.run(discordBotToken)
