@@ -1,6 +1,5 @@
-import discord
-import requests
-import aiohttp
+from discord import Intents, Game
+from aiohttp import ClientSession
 from discord.ext import commands, tasks
 
 # -----------------------------------------------------
@@ -14,7 +13,7 @@ battleMetricsServerID = None #type: int
 #--------------------- END CONFIG ---------------------
 # -----------------------------------------------------
 
-client = commands.Bot(command_prefix="-",intents=discord.Intents().default(),help_command=None)
+client = commands.Bot(command_prefix="-",intents=Intents().default(),help_command=None)
 
 @client.event
 async def on_command_error(ctx, error):
@@ -39,12 +38,12 @@ async def change_status():
     serverQueue = serverData['data']['attributes']['details']['rust_queued_players']
 
     if serverQueue > 0:
-        await client.change_presence(activity=discord.Game(f"{serverPlayers}/{serverMaxPlayers} Queue {serverQueue}"))
+        await client.change_presence(activity=Game(f"{serverPlayers}/{serverMaxPlayers} Queue {serverQueue}"))
     else:
-        await client.change_presence(activity=discord.Game(f"{serverPlayers}/{serverMaxPlayers}"))
+        await client.change_presence(activity=Game(f"{serverPlayers}/{serverMaxPlayers}"))
 
 async def makeWebRequest(URL):
-    async with aiohttp.ClientSession() as session:
+    async with ClientSession() as session:
         async with session.get(URL) as preJSData:
             if preJSData.status == 200:
                 return await preJSData.json()
