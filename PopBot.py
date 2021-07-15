@@ -13,7 +13,7 @@ battleMetricsServerID = None #type: int
 #--------------------- END CONFIG ---------------------
 # -----------------------------------------------------
 
-client = commands.Bot(command_prefix="-",intents=Intents().default(),help_command=None)
+client = commands.Bot(command_prefix="-",help_command=None)
 
 @client.event
 async def on_command_error(ctx, error):
